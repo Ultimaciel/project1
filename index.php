@@ -13,8 +13,8 @@
 
 	    <button type="submit">Login</button><br/>
 
-	    <a href="">Create Account</a><br/>
-	    <a href="">Forgot Password?</a><br/>
+	    <a href="signup.php">Create Account</a><br/>
+	    <a href="lostpsw.php">Forgot Password?</a><br/>
 	</form> 
 
 </body>
