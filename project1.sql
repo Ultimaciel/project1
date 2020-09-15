@@ -1,60 +1,33 @@
 --
--- Tabel Account maken met id, email en password.
+-- Database maken als het nog niet bestaat.
 --
+CREATE DATABASE IF NOT EXISTS project1;
 
-CREATE TABLE `account` (
-  `id` int(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+--
+-- Database gebruiken als nog niet wordt gebruikt.
+--
+USE project1;
+
+--
+-- Tabel account maken met id, email, password en primary key defineren.
+--
+CREATE TABLE account(
+    id INT(255) NOT NULL AUTO_INCREMENT,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    PRIMARY KEY(id)
 );
 
--- --------------------------------------------------------
-
 --
--- Tabel persoon maken met id, account_id, voornaam, tussenvg, achternaam, email, username en password
+-- Tabel persoon maken met id, firstname, middlename, lastname, username, account_id en dan primary key en foreign key defineren.
 --
-
-CREATE TABLE `persoon` (
-  `id` int(255) NOT NULL,
-  `account_id` int(255) NOT NULL,
-  `Voornaam` varchar(255) NOT NULL,
-  `Tussenvoegsel` varchar(255) NOT NULL,
-  `Achternaam` varchar(255) NOT NULL,
-  `Email` varchar(255) NOT NULL,
-  `Username` varchar(255) NOT NULL,
-  `Password` varchar(255) NOT NULL
+CREATE TABLE persoon(
+    id INT NOT NULL AUTO_INCREMENT,
+    firstname VARCHAR(255) NOT NULL,
+    middlename VARCHAR(255) NOT NULL,
+    lastname VARCHAR(255),
+    username VARCHAR(255) NOT NULL,
+    account_id INT NOT NULL,
+    PRIMARY KEY(id),
+    FOREIGN KEY(account_id) REFERENCES account(id)
 );
-
--- --------------------------------------------------------
-
---
--- in account de id primary key maken
---
-
-ALTER TABLE `account`
-  ADD PRIMARY KEY (`id`);
-
---
--- in persson de id primary key maken en account_id unique key naar account
---
-
-ALTER TABLE `persoon`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `account_id` (`account_id`);
-
--- --------------------------------------------------------
-
---
--- Auto Increment voor id in account
---
-
-ALTER TABLE `account`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
-
---
--- Auto Increment voor id in persoon
---
-ALTER TABLE `persoon`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
-
-COMMIT;
