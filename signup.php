@@ -1,10 +1,14 @@
-<!DOCTYPE html>
+<?php
+
+?>
+
+<!DOCTYPE HTML>
 <html>
 <head>
 	<title>Sign up</title>
 </head>
 <body>
-	<form action="" method="post">
+	<form action="" method="POST">
 		<label><b>First name</b></label>
 		<input type="text" name="firstname" required><br/>
 

@@ -1,10 +1,14 @@
-<!DOCTYPE html>
+<?php
+
+?>
+
+<!DOCTYPE HTML>
 <html>
 <head>
 	<title>Login</title>
 </head>
 <body>
-	<form action="" method="post">
+	<form action="" method="POST">
 		<label><b>Username</b></label>
 		<input type="text" placeholder="Enter Username" name="username" required><br/>
 
@@ -18,8 +22,3 @@
 	</form> 
 </body>
 </html>
-
-
-<?php
-
->
