@@ -24,8 +24,8 @@ CREATE TABLE account(
 CREATE TABLE persoon(
     id INT NOT NULL AUTO_INCREMENT,
     firstname VARCHAR(255) NOT NULL,
-    middlename VARCHAR(255) NOT NULL,
-    lastname VARCHAR(255),
+    middlename VARCHAR(255),
+    lastname VARCHAR(255) NOT NULL,
     username VARCHAR(255) NOT NULL,
     account_id INT NOT NULL,
     PRIMARY KEY(id),

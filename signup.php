@@ -1,5 +1,25 @@
 <?php
 
+include 'database.php';
+
+$db = new database('localhost', 'root', '', 'project1', 'utf8');
+
+if (isset($_POST['signupForm'])) {
+	$firstname = ucwords($_POST['firstname']);
+	$middlename = $_POST['middlename'];
+	$lastname = ucwords($_POST['lastname']);
+	$username = $_POST['username'];
+	$email = $_POST['email'];
+	$password = $_POST['password'];
+	$repeatpassword = $_POST['repeatpassword'];
+
+	if ($password === $repeatpassword) {
+		$db->executeQuery($firstname, $middlename, $lastname, $email, $password, $username);
+	} else {
+		echo "error!";
+	}
+}
+
 ?>
 
 <!DOCTYPE HTML>
@@ -30,7 +50,7 @@
 		<label><b>Repeat Password</b></label>
 		<input type="password" name="repeatpassword" required><br/>
 
-		<input type="submit" value="Create"><br/>
+		<input type="submit" name="signupForm" value="Create"><br/>
 	</form> 
 </body>
 </html>
