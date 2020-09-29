@@ -26,9 +26,9 @@ class database{
     }
 
     public function executeQuery($firstname, $middlename, $lastname, $email, $password, $username) {
-        $this->db->beginTransaction();
-
         try {
+            $this->db->beginTransaction();
+            
             $password = password_hash($password, PASSWORD_DEFAULT);
             $query1 = "INSERT INTO account (id, email, password) VALUES (NULL, :email, :password)";
             $statement1 = $this->db->prepare($query1);
