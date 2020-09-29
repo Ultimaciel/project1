@@ -21,7 +21,7 @@ class database{
             $this->db = new PDO($dsn, $this->username, $this->password);
         } catch(PDOException $e) {
             echo $e->getMessage();
-            exit("An error occurred");
+            exit("An error has occurred");
         }
     }
 

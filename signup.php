@@ -16,7 +16,7 @@ if (isset($_POST['signupForm'])) {
 	if ($password === $repeatpassword) {
 		$db->executeQuery($firstname, $middlename, $lastname, $email, $password, $username);
 	} else {
-		echo "error!";
+		echo "Error";
 	}
 }
 
