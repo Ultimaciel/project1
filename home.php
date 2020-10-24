@@ -1,11 +1,31 @@
-<?php
+<?php 
+
+session_start();
+
+if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
+    header('location: index.php');
+    exit;
+} else {
+	$type = $_SESSION['type'];
+
+	if (isset($_SESSION['username'])) {
+		if ($type == 1) {
+			echo 'Welcome User';
+		} elseif ($type == 2) {
+			echo 'Welcome Admin';
+		} else {
+			header("Location: index.php");
+		}
+	}
+}
+
 
 ?>
 
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Forgot Password</title>
+	<title>Home</title>
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -22,48 +42,8 @@
 	<link rel="stylesheet" type="text/css" href="style/css/main.css">
 </head>
 <body>
-<body>
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-50">
-				<form action="" method="POST" class="login100-form validate-form">
-					<span class="login100-form-title p-b-33">
-						Forgot Password
-					</span>
-
-					<div class="wrap-input100 validate-input">
-						<input class="input100" type="text" name="email" placeholder="Email" required>
-						<span class="focus-input100-1"></span>
-						<span class="focus-input100-2"></span>
-					</div>
-
-					<div class="container-login100-form-btn m-t-20">
-						<input type="submit" class="login100-form-btn" name="" value="Submit">
-					</div>
-
-					<div class="text-center p-t-45 p-b-4">
-						<span class="txt1">
-							Already have an account?
-						</span>
-
-						<a href="index.php" class="txt2 hov1">
-							Sign in
-						</a>
-					</div>
-
-					<div class="text-center">
-						<span class="txt1">
-							Create an account?
-						</span>
-
-						<a href="signup.php" class="txt2 hov1">
-							Sign up
-						</a>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+    <a class="nav-link" href="logout.php">Logout</a>
+    
 	<script src="style/vendor/jquery/jquery-3.2.1.min.js"></script>
 	<script src="style/vendor/animsition/js/animsition.min.js"></script>
 	<script src="style/vendor/bootstrap/js/popper.js"></script>
