@@ -119,6 +119,58 @@ class database{
             throw $e;
         }
     }
+
+    public function viewAll() {
+        try{
+            $this->db->beginTransaction();
+                
+                $sql = "SELECT account.id, firstname, middlename, lastname, email, username, usertype.type
+                FROM persoon
+                INNER JOIN account
+                ON persoon.account_id = account.id
+                JOIN usertype
+                ON account.usertype_id = usertype.id;
+                ";
+                
+                $myQuery = $this->db->prepare($sql);
+                
+                $myQuery->execute();
+                
+                $row = $myQuery->fetchAll();
+
+                if (count($row) > 0) {
+                    $_SESSION['admin_view'] = $row;
+                }
+
+                $this->db->commit(); 
+
+        } catch (PDOException $e) {            
+            throw $e;
+        }
+    }
+
+    public function delete() {
+        try{
+            $this->db->beginTransaction();
+            
+            $sql = "DELETE FROM persoon USING persoon INNER JOIN account on  persoon.account_id = account.ID WHERE account.id = :id;";
+        
+            $myQuery = $this->db->prepare($sql);
+    
+            $myQuery->execute([
+                'id' => $_GET['id']
+            ]);
+
+            $this->db->commit(); 
+
+            header('Location: view.php');
+
+            exit;
+
+        } catch (PDOException $e) {            
+            throw $e;
+        }
+    } 
 }
 
 ?>

@@ -12,9 +12,9 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
 
 	if (isset($_SESSION['username'])) {
 		if ($type == 1) {
-			echo "";
+			header("Location: home.php");
 		} elseif ($type == 2) {
-			header("Location: home_admin.php");
+            echo "";
 		} else {
 			header("Location: index.php");
 		}
@@ -23,7 +23,6 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
 
 
 ?>
-
 
 <!DOCTYPE HTML>
 <html>
@@ -54,15 +53,12 @@ if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true){
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <ul class="nav navbar-right top-nav ">
                 <li>
-                    <a href="" class="dropdown-toggle" data-toggle="dropdown">Settings</a>
-                    <ul class="dropdown-menu">
-                        <li><a href=""><i class="fa fa-fw fa-user"></i>View User</a></li>
-                    </ul>
+                    <a href="view.php">Admin Panel</a>
                 </li>
                 <li class="dropdown ">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown">Admin User</a>
                     <ul class="dropdown-menu">
-                        <li><a href="#"><i class="fa fa-fw fa-user"></i>Profile</a></li>
+                        <li><a href="home.php"><i class="fa fa-fw fa-user"></i>Profile</a></li>
                         <li class="divider"></li>
                         <li><a href="logout.php"><i class="fa fa-fw fa-power-off"></i> Logout</a></li>
                     </ul>

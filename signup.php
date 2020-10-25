@@ -2,6 +2,8 @@
 
 include 'database.php';
 
+$alert = "";
+
 if (isset($_POST['signupForm'])) {
 	$fieldnames = array('firstname', 'lastname', 'username', 'email', 'password', 'repeatpassword');
 
@@ -29,7 +31,7 @@ if (isset($_POST['signupForm'])) {
 		if ($password === $repeatpassword) {
 			$db->executeQuery($firstname, $middlename, $lastname, $email, $password, $username, $db::USER);
 		} else {
-			echo "Error";
+			$alert = "An error has occured";
 		}
 	}
 }
@@ -70,7 +72,7 @@ if (isset($_POST['signupForm'])) {
 						<span class="focus-input100-2"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input">
+					<div class="wrap-input100">
 						<input class="input100" type="text" name="middlename" placeholder="Middlename">
 						<span class="focus-input100-1"></span>
 						<span class="focus-input100-2"></span>
@@ -129,6 +131,7 @@ if (isset($_POST['signupForm'])) {
 							Sign in
 						</a>
 					</div>
+					<?php echo $alert; ?>
 				</form>
 			</div>
 		</div>
